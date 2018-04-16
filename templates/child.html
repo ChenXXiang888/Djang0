@@ -1,0 +1,14 @@
+{% extends 'parent.html' %}
+{% block title %}
+<h3>子模板title </h3>
+{% endblock %}
+
+{% block header %}
+    {{ block.super }}
+<h3>子模板 头部</h3>
+{% endblock %}
+
+{% block footer %}
+    {{ block.super }}
+<h3>子模板 尾部</h3>
+{% endblock %}

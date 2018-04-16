@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{#    <h3>模板变量不为空</h3>#}
+{#    数字:{{ number }}<br>#}
+{#    字典：{{ my_dict.key01}}<br>#}
+{#    列表：{{ my_list.1 }}<br>#}
+{#    对象：{{ my_obj.name }}<br>#}
+{#    <h1>使用for 遍历列表</h1>#}
+{#    reversed 倒序遍历：#}
+{#    {% for item in my_list reversed %}#}
+{#        {{ item }}<br>#}
+{#    {% empty %}#}
+{#        列表为空#}
+{#    {% endfor %}#}
+{#    <h1>for 遍历字典</h1>#}
+{#    {% for key,value in my_dict.items%}#}
+{#        {{ forloop.counter }}  {{key}}:{{value}}<br/>#}
+{#    {% endfor %}#}
+{##}
+{#    <h1>for forlooper.counter</h1>#}
+{#    {% for item in my_list %}#}
+{#        {{ forloop.counter }}  {{ item }}<br>#}
+{#    {% endfor %}#}
+{##}
+{#    <h3>if</h3>#}
+{#        {% if number == 1 %}#}
+{#            1#}
+{#        {% elif number == 5 %}#}
+{#            5#}
+{#        {% else %}#}
+{#            其他#}
+{#        {% endif %}#}
+{##}
+{#    <h3>if 逻辑运算</h3>#}
+{#    {% if number >= 1 and number <= 10 %}#}
+{#    1<={{ number }}<=10 成立#}
+{#    {% else %}#}
+{#        1<={{ number }}<=10 不成立#}
+{#    {% endif %}#}
+{##}
+{#<h3>过滤器使用</h3>#}
+{#列表长度：{{ my_list|length }}<br>#}
+{#字典长度：{{ my_dict|length }}<br>#}
+{#对象长度：{{ my_obj.name|length }}<br>#}
+{##}
+{#<h3>过滤器使用default</h3>#}
+{#number：{{ number }}<br>#}
+{#设置默认值：{{ number|default:10}}<br>#}
+{#设置默认值：{{ number2|default:20}}<br>#}
+
+{% comment %}
+  注释内容
+{% endcomment %}
+
+{#<h3>过滤器使用date</h3>#}
+{##}
+{#设置默认值：{{my_date}}<br>#}
+{#设置默认值：{{my_date|date:'Y年m月d日 H时i分s秒' }}<br>#}
+{##}
+{#<h3>自定义过滤器的使用date</h3>#}
+{#{% load filters %}#}
+{#{% if number|odd  %}#}
+{#            奇数#}
+{#{% else %}#}
+{#    偶数#}
+{#{% endif %}#}
+{#<h3>通过render传给模板字典数据会发生转译</h3>#}
+{#通过safe防止转译#}
+{#{{my_html|safe }}#}
+{#{% autoescape off %}#}
+{#    {{ my_html }}    {{ my_html }}    {{ my_html }}#}
+{#{% endautoescape %}#}
+硬编码: <br/>
+<a href="/inherit">进入首页</a> <br>
+<a href="/show_news/1/2">进入新闻</a> <br>
+<a href="/show_news2/1/2">进入新闻2</a> <br>
+自动生成编码: <br/>
+<a href="{% url 'app01:inherit'%}">进入首页</a> <br>
+<a href="{% url 'app01:show_news' 0 0 %}">进入新闻</a> <br>
+<a href="{% url 'app01:show_news2' category=1 page_no=2 %}">进入新闻2</a> <br>
+<a href="{% url 'app01:show_news2' 0 0 %}">进入新闻2</a> <br>
+
+</body>
+</html>
